@@ -30,7 +30,7 @@ function makeMap(data) {
     albersProjection = d3.geoAlbers()
         .scale( 70000 )
         .rotate( [71.057,0] )
-        .center( [-2.9, 40.7] )
+        .center( [-2.9, 40.72] )
         .translate( [width/2,height/2] );
     geoPath = d3.geoPath()
         .projection( albersProjection );
@@ -40,6 +40,17 @@ function makeMap(data) {
         .enter()
         .append( "path" )
         .attr( "d", geoPath );
+
+    makeLabels();
+}
+
+function makeLabels() {
+    svg.append('text')
+      .attr('x', 300)
+      .attr('y', 25)
+      .style('font-size', '20pt')
+      .style('font-family', 'sans-serif')
+      .text("Airbnb in NYC");
 }
 
 function makeCircles(data) {
